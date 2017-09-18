@@ -1,9 +1,12 @@
-var canvas=document.getElementById("canvas");
+var canvas = document.getElementById("canvas");
 
 function init() {
     canvas.width = 800;
     canvas.height = 600;
     game = new Game(canvas);
+    var fps = new FPS(game);
+    game.addObject("fps", fps);
+    game.update();
 }
 
 window.requestAnimationFrame = (function() {
