@@ -6,6 +6,8 @@ function init() {
     game = new Game(canvas);
     var fps = new FPS(game);
     game.addObject("fps", fps);
+    var ball = new Ball(game);
+    game.addObject("ball", ball);
     game.update();
 }
 
