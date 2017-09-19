@@ -3,11 +3,11 @@ function Ball(game) {
     this.x = 100;
     this.y = 100;
     this.angle = 0.5;
-    this.speed = 5;
+    this.speed = 0.3;
 
     this.update = function(timeDelta) {
         // X座標の移動
-        this.x = this.x + this.speed * Math.cos(this.angle);
+        this.x = this.x + timeDelta * this.speed * Math.cos(this.angle);
         if (this.x < 0) {
             this.x = 0;
             this.angle = Math.PI- this.angle;
@@ -18,7 +18,7 @@ function Ball(game) {
         }
 
         // Y座標の移動
-        this.y = this.y + this.speed * Math.sin(this.angle);
+        this.y = this.y + timeDelta * this.speed * Math.sin(this.angle);
         if (this.y < 0) {
             this.y = 0;
             this.angle = -this.angle;
