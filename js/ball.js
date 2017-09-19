@@ -1,11 +1,13 @@
 function Ball(game) {
     this.game = game;
-    this.x = 100;
-    this.y = 100;
+    this.prevX = this.x = 100;
+    this.prevY = this.y = 100;
     this.angle = 0.5;
     this.speed = 0.3;
 
     this.update = function(timeDelta) {
+        this.prevX = this.x;
+        this.prevY = this.y;
         // X座標の移動
         this.x = this.x + timeDelta * this.speed * Math.cos(this.angle);
         if (this.x < 0) {
@@ -33,5 +35,9 @@ function Ball(game) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false);
         ctx.fill();
+    };
+    this.intersect = function(x1, y1, x2, y2) {
+        var basearc = Math.atan2(y1-y2, x1-x2);
+        this.angle = basearc * 2 - this.angle;
     };
 }
