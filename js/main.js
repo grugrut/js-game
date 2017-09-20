@@ -43,8 +43,30 @@ function mouseup(e) {
     mousePress = false;
 };
 
+function touchstart(e) {
+    console.log(e);
+    mousePress = true;
+    mouseX = e.changedTouches[0].pageX;
+    mouseY = e.changedTouches[0].pageY;
+};
+
+function touchmove(e) {
+    console.log(e);
+    e.preventDefault();
+    mouseX = e.changedTouches[0].pageX;
+    mouseY = e.changedTouches[0].pageY;
+};
+
+function touchend(e) {
+    console.log(e);
+    mousePress = false;
+}
+
 document.addEventListener('mousedown', mousedown);
 document.addEventListener('mousemove', mousemove);
 document.addEventListener('mouseup', mouseup);
+document.addEventListener('touchstart', touchstart);
+document.addEventListener('touchmove', touchmove);
+document.addEventListener('touchend', touchend);
 
 init();
